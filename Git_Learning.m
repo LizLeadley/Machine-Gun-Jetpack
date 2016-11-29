@@ -2,4 +2,4 @@
 Header comments
 %}
 
-HaddockSuck = 1;
+HaddockSuck = 0;
