@@ -14,7 +14,7 @@ y = conditions(1);
 v_y = conditions(2);
 
 %flow functions
-a_y = ((-mass * gravity) - (0.5 * drag_coeff * area * air_density))/mass;
+a_y = ((-mass * gravity) - (0.5 * drag_coeff * area * air_density * v_y^2))/mass;
 %a_y = -gravity;
 
 res = [v_y;a_y];
