@@ -18,6 +18,13 @@ xlabel ('Horizontal Position (meters)')
 ylabel ('Vertical Position (meters)')
 title ('GSH-3-60 for 10 seconds at 75 bps, loaded with 1000 bullets')
 
+figure
+plot (time, y)
+xlabel ('Time (seconds)')
+ylabel ('Vertical Position (meters)')
+title ('GSH-3-60 for 10 seconds at 75 bps, loaded with 1000 bullets')
+
+
 TimeBlob = 0;
 AllvarsBlob = 0;
 end
