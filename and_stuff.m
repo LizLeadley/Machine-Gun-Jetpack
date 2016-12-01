@@ -12,5 +12,11 @@ v_x = allvars (:, 3);
 v_y = allvars (:, 4);
 mass = allvars (:, 5);
 
-
+disp(x)
+disp(y)
 plot (x, y)
+
+
+TimeBlob = 0
+AllvarsBlob = 0
+end

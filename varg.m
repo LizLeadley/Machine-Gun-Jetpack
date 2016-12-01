@@ -17,17 +17,18 @@ muzzle_velocity = -845; %m/s, GSH-3-60
 theta = 45; %degrees from ground
 
 %% Packing allvars
-allvars (:, 1) = x;
-allvars (:, 2) = y;
-allvars (:, 3) = v_x;
-allvars (:, 4) = v_y;
-allvars (:, 5) = mass;
-
-allvars (:, 6) = firing_rate; %bullets per second
-allvars (:, 7) = bullet_mass;
-allvars (:, 8) = casing_mass;
-allvars (:, 9) = muzzle_velocity;
-allvars (:, 10) = theta;
+allvars = [x, y, v_x, v_y, mass, firing_rate, bullet_mass, casing_mass, muzzle_velocity, theta];
+% allvars (:, 1) = x;
+% allvars (:, 2) = y;
+% allvars (:, 3) = v_x;
+% allvars (:, 4) = v_y;
+% allvars (:, 5) = mass;
+% 
+% allvars (:, 6) = firing_rate; %bullets per second
+% allvars (:, 7) = bullet_mass;
+% allvars (:, 8) = casing_mass;
+% allvars (:, 9) = muzzle_velocity;
+% allvars (:, 10) = theta;
 
 
 %% Call and_stuff
