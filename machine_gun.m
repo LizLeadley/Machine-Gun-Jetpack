@@ -15,7 +15,8 @@ mass_btotal = mass_bullet + mass_casing; %kg
 %Load 50 bullets worth of mass
 mass = mass + (num_bullets*mass_btotal);
 
-%initial position
+%initial conditions
+v_y = 0;
 y = 0;
 Timee(1) = 0;
 Y_pos(1) = y;
@@ -28,7 +29,7 @@ hold on
 for i = 0:num_bullets
     
 %Velocity of gun after thrust’s effect
-v_y = (-mass_bullet*v_muzzle)/(mass);
+v_y = v_y + (-mass_bullet*v_muzzle)/(mass);
 %Remove mass of one bullet from mass of gun
 mass = mass - mass_btotal;
 
@@ -36,6 +37,8 @@ mass = mass - mass_btotal;
 [T, S] = ode45(@machine_gun_function, [0, 1/firing_rate], [y, v_y]);
 
 Y = S(:,1);
+Vel_Y = S(:, 2);
+v_y = Vel_Y (end);
 
 Tend = T(end);
 Timee = [Timee; T+(Tend*i)];
@@ -44,6 +47,16 @@ Y_pos = [Y_pos;Y];
 % plot(T,Y);
 y = Y(end);
 end
+
+%make it fall to the ground
+[T, S] = ode45(@machine_gun_function, [0, 50], [y, v_y]);
+
+Y = S(:,1);
+
+Tend = Timee(end)
+Timee = [Timee; Tend+T];
+Y_pos = [Y_pos; Y];
+
 
 %% Plotting
 
