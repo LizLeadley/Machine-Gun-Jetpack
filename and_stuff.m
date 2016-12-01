@@ -12,11 +12,12 @@ v_x = allvars (:, 3);
 v_y = allvars (:, 4);
 mass = allvars (:, 5);
 
-disp(x)
-disp(y)
+
 plot (x, y)
+xlabel ('Horizontal Position (meters)')
+ylabel ('Vertical Position (meters)')
+title ('GSH-3-60 for 10 seconds at 75 bps, loaded with 1000 bullets')
 
-
-TimeBlob = 0
-AllvarsBlob = 0
+TimeBlob = 0;
+AllvarsBlob = 0;
 end

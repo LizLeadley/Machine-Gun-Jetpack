@@ -38,14 +38,14 @@ theta_rad = deg2rad(theta);
 Fdrag_x = -.5*rho*coeff_drag*area*(v_x^2 + v_y^2)*cos(theta_rad); %Newtons
 Fdrag_y = -.5*rho*coeff_drag*area*(v_x^2 + v_y^2)*sin(theta_rad); %Newtons
 Fgravity = -9.8*mass; %Newtons
-Fthrust_x = firing_rate*(bullet_mass+casing_mass)*muzzle_velocity*cos(theta_rad);
-Fthrust_y = firing_rate*(bullet_mass+casing_mass)*muzzle_velocity*sin(theta_rad);
+Fthrust_x = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*cos(theta_rad);
+Fthrust_y = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*sin(theta_rad);
 
 dx = v_x; %m/s
 dy = v_y; %m/s
 dv_x = (Fdrag_x + Fthrust_x) / mass; %m/s^2
 dv_y = (Fdrag_y + Fgravity + Fthrust_y) / mass; %m/s^2
-dmass = firing_rate * (bullet_mass + casing_mass);
+dmass = - firing_rate * (bullet_mass + casing_mass);
 
 
 %% Repacking allchanges
