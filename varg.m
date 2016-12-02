@@ -8,13 +8,19 @@ v_y = 0;
 mass_gun = 149; %kg, GSH-3-60
 bullet_mass = .390; %kg, GSH-3-60
 casing_mass = .442; %kg, GSH-3-60
-bullet_number_loaded = 1000;
+bullet_number_loaded = 4250;
 mass = mass_gun + ((bullet_mass + casing_mass)*bullet_number_loaded);
 
 
-firing_rate = 75; %bullets per second
+firing_rate = 100; %bullets per second
 muzzle_velocity = -845; %m/s, GSH-3-60
 theta = 45; %degrees from ground
+
+%% More Guns
+number_guns = 1000;
+mass = mass * number_guns;
+firing_rate = firing_rate * number_guns;
+
 
 %% Packing allvars
 allvars = [x, y, v_x, v_y, mass, firing_rate, bullet_mass, casing_mass, muzzle_velocity, theta];
