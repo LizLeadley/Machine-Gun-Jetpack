@@ -16,41 +16,33 @@ firing_rate = 100; %bullets per second
 muzzle_velocity = -845; %m/s, GSH-3-60
 theta = 45; %degrees from ground
 
-%% More Guns
-number_guns = 1000;
-mass = mass * number_guns;
-firing_rate = firing_rate * number_guns;
+thrust_on = 1;
+
+% %% More Guns
+% number_guns = 8;
+% mass = mass * number_guns;
+% firing_rate = firing_rate * number_guns;
 
 
 %% Packing allvars
-allvars = [x, y, v_x, v_y, mass, firing_rate, bullet_mass, casing_mass, muzzle_velocity, theta];
-% allvars (:, 1) = x;
-% allvars (:, 2) = y;
-% allvars (:, 3) = v_x;
-% allvars (:, 4) = v_y;
-% allvars (:, 5) = mass;
-% 
-% allvars (:, 6) = firing_rate; %bullets per second
-% allvars (:, 7) = bullet_mass;
-% allvars (:, 8) = casing_mass;
-% allvars (:, 9) = muzzle_velocity;
-% allvars (:, 10) = theta;
+allvars = [x, y, v_x, v_y, mass, firing_rate, bullet_mass, casing_mass, muzzle_velocity, theta, thrust_on];
 
 
 %% Call and_stuff
 
-[TimeBlobs, AllvarsBlobs] = and_stuff(allvars);
+[TimeBlob, AllvarsBlob] = and_stuff(allvars);
 
 
 %% Unpacking allvars
-x = allvars (:, 1);
-y = allvars (:, 2);
-v_x = allvars (:, 3);
-v_y = allvars (:, 4);
-mass = allvars (:, 5);
+x = AllvarsBlob (:, 1);
+y = AllvarsBlob (:, 2);
+v_x = AllvarsBlob (:, 3);
+v_y = AllvarsBlob (:, 4);
+mass = AllvarsBlob (:, 5);
 
-firing_rate = allvars (:, 6); %bullets per second
-bullet_mass = allvars (:, 7);
-casing_mass = allvars (:, 8);
-muzzle_velocity = allvars (:, 9);
-theta = allvars (:, 10);
+firing_rate = AllvarsBlob (:, 6); %bullets per second
+bullet_mass = AllvarsBlob (:, 7);
+casing_mass = AllvarsBlob (:, 8);
+muzzle_velocity = AllvarsBlob (:, 9);
+theta = AllvarsBlob (:, 10);
+thrust_on = AllvarsBlob (:, 11);

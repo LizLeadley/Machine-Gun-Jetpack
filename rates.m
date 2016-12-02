@@ -13,6 +13,8 @@ casing_mass = allvars (8,:);
 muzzle_velocity = allvars (9,:);
 theta = allvars (10,:);
 
+thrust_on = allvars (11,:);
+
 %% State variables
 
 rho = 1.225; %density of air
@@ -26,18 +28,24 @@ theta_rad = deg2rad(theta);
 Fdrag_x = -.5*rho*coeff_drag*area*v_x^2; %Newtons
 Fdrag_y = -.5*rho*coeff_drag*area*v_y^2; %Newtons
 Fgravity = -9.8*mass; %Newtons
-Fthrust_x = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*cos(theta_rad);
-Fthrust_y = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*sin(theta_rad);
+
+if thrust_on == 1
+    Fthrust_x = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*cos(theta_rad);
+    Fthrust_y = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*sin(theta_rad);
+    dmass = - firing_rate * (bullet_mass + casing_mass);
+else
+    Fthrust_x = 0;
+    Fthrust_y = 0;
+    dmass = 0;
+end
 
 dx = v_x; %m/s
 dy = v_y; %m/s
 dv_x = (Fdrag_x + Fthrust_x) / mass; %m/s^2
 dv_y = (Fdrag_y + Fgravity + Fthrust_y) / mass; %m/s^2
-dmass = - firing_rate * (bullet_mass + casing_mass);
-
 
 %% Repacking allchanges
 
-allchanges = [dx; dy; dv_x; dv_y; dmass; 0; 0; 0; 0; 0];
+allchanges = [dx; dy; dv_x; dv_y; dmass; 0; 0; 0; 0; 0; 0];
 
 end
