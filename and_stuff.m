@@ -5,10 +5,9 @@ options = odeset('Events',@peaks);
 [time, allvars,time_peak,allvars_peak,index_peak] = ode45 (@rates, [0,42], allvars,options);
     function [value,isterminal,direction] = peaks(time,allvars)
         height = allvars(2,:);
-        value = [height-1031;height-1344;height-2355;height-2984;height-3020;height-3724;height-3776;...
-            height-4023];
-        isterminal = [0;0;0;0;0;0;0;0];
-        direction = [1;1;1;1;1;1;1;1];
+        value = [height-1031;height-1344;height-2355;height-2984;height-3020;height];
+        isterminal = [0;0;0;0;0;1];
+        direction = [1;1;1;1;1;-1];
     end
 
 
@@ -31,7 +30,7 @@ mass = allvars (:, 5);
 allvars_falling = allvars(end, :);
 allvars_falling(:,11) = 0;
 
-[time_falling, allvars_falling,time_peak_falling,allvars_peak_falling,index_peak_falling] = ode45 (@rates, [0, 9], allvars_falling,options);
+[time_falling, allvars_falling,time_peak_falling,allvars_peak_falling,index_peak_falling] = ode45 (@rates, [0, 150], allvars_falling,options);
 
 x_falling = allvars_falling(:, 1);
 y_falling = allvars_falling(:, 2);
@@ -51,6 +50,7 @@ hold on
 for i = 1:length(peak_x)
     line([peak_x(i) peak_x(i)],[0 peak_y(i)],[1 1],'LineStyle','-','LineWidth',1,'Color',[.8 0 0]);
 end
+axis([0 6 0 3.5])
 xlabel ('Horizontal Position (meters)')
 ylabel ('Vertical Position (meters)')
 title ('GSH-3-60 Trajectory and Mountain Peaks')
