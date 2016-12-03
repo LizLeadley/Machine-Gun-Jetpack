@@ -18,11 +18,6 @@ theta = 45; %degrees from ground
 
 thrust_on = 1;
 
-% %% More Guns
-% number_guns = 8;
-% mass = mass * number_guns;
-% firing_rate = firing_rate * number_guns;
-
 
 %% Packing allvars
 allvars = [x, y, v_x, v_y, mass, firing_rate, bullet_mass, casing_mass, muzzle_velocity, theta, thrust_on];
