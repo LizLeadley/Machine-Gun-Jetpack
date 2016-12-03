@@ -25,8 +25,18 @@ theta_rad = deg2rad(theta);
 
 %% Changes
 
-Fdrag_x = -.5*rho*coeff_drag*area*v_x^2; %Newtons
-Fdrag_y = -.5*rho*coeff_drag*area*v_y^2; %Newtons
+if v_x == 0
+    Fdrag_x = -.5*rho*coeff_drag*area*(v_x^2);
+    Fdrag_y = -.5*rho*coeff_drag*area*(v_y^2);
+else
+    Fdrag_x = -.5*rho*coeff_drag*area*(v_x^2+v_y^2)*(v_x/sqrt(v_x^2+v_y^2)); %Newtons
+    Fdrag_y = -.5*rho*coeff_drag*area*(v_x^2+v_y^2)*(v_y/sqrt(v_x^2+v_y^2)); %Newtons
+end
+
+% % Fdrag_x = -.5*rho*coeff_drag*area*(v_x^2);
+% % Fdrag_y = -.5*rho*coeff_drag*area*(v_y^2);
+% Fdrag_x = -.5*rho*coeff_drag*area*(v_x^2+v_y^2)*(v_x/sqrt(v_x^2+v_y^2)); %Newtons
+% Fdrag_y = -.5*rho*coeff_drag*area*(v_x^2+v_y^2)*(v_y/sqrt(v_x^2+v_y^2)); %Newtons
 Fgravity = -9.8*mass; %Newtons
 
 if thrust_on == 1

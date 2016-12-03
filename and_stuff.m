@@ -42,8 +42,8 @@ y_falling = allvars_falling(:, 2);
 x = [x; x_falling];
 y = [y; y_falling];
 time = [time; time_falling+42];
-peak_x = [allvars_peak(:,1)/1000;allvars_peak_falling(:,1)/1000];
-peak_y = [allvars_peak(:,2)/1000;allvars_peak_falling(:,2)/1000];
+peak_x = [allvars_peak(:,1)/1000];
+peak_y = [allvars_peak(:,2)/1000];
 
 
 plot (x/1000, y/1000,'LineWidth',1.5)
