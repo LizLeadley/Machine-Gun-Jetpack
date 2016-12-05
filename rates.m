@@ -43,6 +43,7 @@ if thrust_on == 1
     Fthrust_x = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*cos(theta_rad);
     Fthrust_y = firing_rate*(bullet_mass+casing_mass)*-muzzle_velocity*sin(theta_rad);
     dmass = - firing_rate * (bullet_mass + casing_mass);
+%     dmass = 0;
 else
     Fthrust_x = 0;
     Fthrust_y = 0;
