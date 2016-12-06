@@ -1,4 +1,4 @@
-clear all, clf
+% clear all, clf
 num_bullets = [1000:100:8000];
 
 for i = 1:length(num_bullets)
@@ -18,4 +18,4 @@ line ([6000, 6000], [ylim])
 axis ([1000 8000 1000 3500]) 
 xlabel ('Number of Bullets')
 ylabel ('Maximum Vertical Position (meters)')
-title ('GSH-3-60 Trajectory and Mountain Peaks')
+title ('Maximum Height vs Number of Bullets Loaded')
